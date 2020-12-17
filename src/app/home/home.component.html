@@ -1,0 +1,73 @@
+<!-- nav-right -->
+<div class="nav-right visible-xs">
+  <div class="button" id="btn">
+    <div class="bar top"></div>
+    <div class="bar middle"></div>
+    <div class="bar bottom"></div>
+  </div>
+</div>
+<!-- /nav-right -->
+
+<!-- Page Content -->
+<main>
+  <nav>
+    <div class="nav-right hidden-xs">
+      <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="row" style="margin-top: 65px;">
+    <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+      <a  [routerLink]="['/pessoa']">
+        <div class="face face1">
+          <div class="content">
+            <div class="">
+              <h3 style="color: #fff;">Usuarios</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+      <a  [routerLink]="['/pessoa']">
+        <div class="face face1">
+          <div class="content">
+            <div class="">
+              <h3 style="color: #fff;">Propriedades</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+      <a  [routerLink]="['/pessoa']">
+        <div class="face face1">
+          <div class="content">
+            <div class="">
+              <h3 style="color: #fff;">Pessoas</h3>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</main>
+<!-- /Page Content -->
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <ul class="sidebar-list">
+    <li style="margin-bottom: 50px;" class="sidebar-item"><a [routerLink]="['/home']" class="sidebar-anchor">Home</a></li>
+    <li class="sidebar-item"><a [routerLink]="['/produtos']" class="sidebar-anchor" style="font-size: 1.3em;">Pessoas</a></li>
+    <li class="sidebar-item"><a [routerLink]="['/categorias']" class="sidebar-anchor" style="font-size: 1.3em;">Propriedades</a></li>
+    <li class="sidebar-item"><a [routerLink]="['/categorias']" class="sidebar-anchor" style="font-size: 1.3em;">Usuarios</a></li>
+  </ul>
+</div>
+<!-- /sidebar -->

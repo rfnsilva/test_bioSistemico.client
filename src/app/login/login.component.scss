@@ -1,0 +1,89 @@
+$color-accent: #ffc107;;
+$color-input: #fff;
+
+.container{
+  background-image:url(https://media.giphy.com/media/xTcf1bLx13s88JXlrG/giphy.gif);
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  text-align: center;
+}
+
+fieldset{
+  border: none;
+}
+
+input[type="radio"] {
+  position: fixed;
+  left: -100px;
+}
+
+input:not([type="radio"]) {
+  appearance: none;
+  background-color: $color-input;
+  display: block;
+  transition: 300ms ease;
+  border-radius: 7px;
+  border: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0 10px;
+  overflow: hidden;
+  width: 250px;
+  opacity: 0;
+  font-size: 16px;
+  text-align: center;
+  outline: 0;
+}
+
+[id="sign-in"]:checked ~ input.sign-in {
+  max-height: 40px;
+  padding: 10px;
+  margin: 10px 0;
+  opacity: 1;
+}
+
+button {
+  width: 250px;
+  height: 40px;
+  border-radius: 7px;
+  background-color: $color-accent;
+  font-size: 0;
+  border: none;
+  &:before { font-size: 16px; }
+}
+
+[id="sign-in"]:checked ~ button:before { content: 'Sign In'; }
+
+label {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  color: $color-accent;
+  transition: 300ms ease;
+  width: calc(100% / 3 - 4px);
+
+  &:after {
+    content: '';
+    border: 10px solid transparent;
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 10px);
+    transition: inherit;
+  }
+}
+
+[id="sign-in"]:checked ~ [for="sign-in"] {
+  color: $color-input;
+  &:after {
+    border-bottom-color: $color-input;
+  }
+}

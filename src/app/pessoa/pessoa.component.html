@@ -1,0 +1,178 @@
+<div class="nav-right visible-xs">
+  <div class="button" id="btn">
+    <div class="bar top"></div>
+    <div class="bar middle"></div>
+    <div class="bar bottom"></div>
+  </div>
+</div>
+<!-- nav-right -->
+
+<!-- Page Content -->
+<main>
+  <nav>
+    <div class="nav-right hidden-xs">
+      <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
+      </div>
+    </div>
+  </nav>
+
+  <div style="margin-top: 55px;" class="row">
+    <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+      <button data-toggle="modal" data-target="#exampleModal4" class="btn btn-secondary" style="float: right;margin-right: 18px;background-color: #EF8354;">adicionar</button>
+    </div>
+  </div>
+
+  <div class="container-fluid table-responsive">
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">nome</th>
+          <th scope="col">sobrenome</th>
+          <th scope="col">cpf</th>
+          <th scope="col">perfil</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pessoa of pessoas">
+          <th id="id_corte" scope="row">{{ pessoa?.id }}</th>
+          <td id="id_corte">{{ pessoa?.nome }}</td>
+          <td id="id_corte">{{ pessoa?.sobrenome }}</td>
+          <td id="id_corte">{{ pessoa?.cpf }}</td>
+          <td id="id_corte">{{ pessoa?.perfil }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" (click)="Action(1, pessoa?.id, pessoa?.nome, pessoa?.categoria?.nome, pessoa?.produtos)" data-toggle="modal" data-target="#exampleModal1" class="btn btn-secondary">edit</button>
+              <button type="button" (click)="Action(2, pessoa?.id, pessoa?.nome, pessoa?.categoria?.nome, pessoa?.produtos)" data-toggle="modal" data-target="#exampleModal2" class="btn btn-secondary">del</button>
+              <button type="button" (click)="Action(3, pessoa?.id, pessoa?.nome, pessoa?.categoria?.nome, pessoa?.produtos)" data-toggle="modal" data-target="#exampleModal3" class="btn btn-secondary">detalhes</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>>
+<!-- /#page-content-wrapper -->
+
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <ul class="sidebar-list">
+    <li style="margin-bottom: 50px;" class="sidebar-item"><a [routerLink]="['/home']" class="sidebar-anchor">Home</a></li>
+    <li class="sidebar-item"><a [routerLink]="['/produtos']" class="sidebar-anchor" style="font-size: 1.3em;">Pessoas</a></li>
+    <li class="sidebar-item"><a [routerLink]="['/categorias']" class="sidebar-anchor" style="font-size: 1.3em;">Propriedades</a></li>
+    <li class="sidebar-item"><a [routerLink]="['/categorias']" class="sidebar-anchor" style="font-size: 1.3em;">Usuarios</a></li>
+  </ul>
+</div>
+<!-- /sidebar -->
+
+<!--MODALS-->
+
+<!--edit-->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label>ID</label>
+            <input disabled="" type="text" value="{{modal_id}}" class="form-control">
+            <br />
+            <label>Nome</label>
+            <input formControlName="nome" name="nome" type="text" class="form-control" value="{{modal_nome}}">
+            <br />
+            <label>sobrenome</label>
+            <input formControlName="sobrenome" name="sobrenome" type="text" value="{{modal_sobrenome}}" class="form-control">
+            <br />
+            <label>cpf</label>
+            <input formControlName="cpf" name="cpf" type="text" value="{{modal_cpf}}" class="form-control">
+            <br />
+            <label>perfil</label>
+            <input formControlName="perfil" name="perfil" type="text" value="{{modal_perfil}}" class="form-control">
+          </div>
+
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" [disabled]="!profileForm.valid" name="button" class="btn btn-primary">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--detalhes-->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalhes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>ID</label>
+        <input disabled="" type="text" value="{{modal_id}}" class="form-control">
+        <br />
+        <label>nome</label>
+        <input disabled="" type="text" value="{{modal_nome}}" class="form-control">
+        <br />
+        <label>sobrenome</label>
+        <input disabled="" type="text" value="{{modal_sobrenome}}" class="form-control">
+        <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--adicionar-->
+<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit1()">
+
+          <div class="form-group">
+            <label>nome</label>
+            <input formControlName="nome" type="text" class="form-control">
+
+            <label>sobrenome</label>
+            <input formControlName="sobrenome" type="text" class="form-control">
+
+            <label>cpf</label>
+            <input formControlName="cpf" type="text" class="form-control">
+
+            <label>perfil</label>
+            <input formControlName="perfil" type="text" class="form-control">
+
+          </div>
+
+          <button type="button" class="btn btn-secondary botao" data-dismiss="modal">Fechar</button>
+          <button type="submit" [disabled]="!profileForm.valid" name="button" class="btn btn-primary botao">Salvar</button>
+        </form>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--FIM MODALS-->
